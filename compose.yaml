@@ -3,9 +3,7 @@ version: "3.9"
 services:
   simulation:
     container_name: simulation
-    build:
-      context: ./AGV-Simulation-ROS2-Gazebo
-      dockerfile: Dockerfile
+    image: ghcr.io/jakubczech/agv-simulation-ros2-gazebo:develop
     environment:
       - DISPLAY=$DISPLAY
     volumes:
@@ -24,14 +22,14 @@ services:
 
   navigation:
     container_name: navigation
-    build:
-      context: ./AGV-Navigation
-      dockerfile: Dockerfile
+    image: ghcr.io/jakubczech/agv-navigation:simulation
     environment:
       - DISPLAY=$DISPLAY
     volumes:
       - /dev:/dev:ro
-      - ./AGV-Navigation/src:/root/workspace/src:rw
+      - ./AGV-Navigation/src/agv_navigation:/root/workspace/src/agv_navigation:rw
+      - ./AGV-Navigation/src/agv_planner:/root/workspace/src/agv_planner:rw
+      - ./AGV-Navigation/src/agv_controller:/root/workspace/src/agv_controller:rw
       - ./AGV-Navigation/scripts/entrypoint.sh:/root/workspace/entrypoint.sh:rw
     entrypoint:
       - /root/workspace/entrypoint.sh
