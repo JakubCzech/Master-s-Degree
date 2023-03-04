@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  simulation:
+    container_name: simulation
+    build:
+      context: ./AGV-Simulation-ROS2-Gazebo
+      dockerfile: Dockerfile
+    environment:
+      - DISPLAY=$DISPLAY
+    volumes:
+      - /dev:/dev:ro
+      - ./AGV-Simulation-ROS2-Gazebo/src/agv_simulation:/root/workspace/src/agv_simulation:rw
+      - ./AGV-Simulation-ROS2-Gazebo/scripts/ros2_build.sh:/root/workspace/ros2_build.sh:rw
+      - ./AGV-Simulation-ROS2-Gazebo/scripts/rebuild_model.sh:/root/workspace/rebuild_model.sh:rw
+      - ./AGV-Simulation-ROS2-Gazebo/scripts/entrypoint.sh:/root/workspace/entrypoint.sh:rw
+    entrypoint:
+      - /root/workspace/entrypoint.sh
+    tty: true
+    stdin_open: true
+    privileged: true
+    network_mode: host
+    hostname: agv
+
+  navigation:
+    container_name: navigation
+    build:
+      context: ./AGV-Navigation
+      dockerfile: Dockerfile
+    environment:
+      - DISPLAY=$DISPLAY
+    volumes:
+      - /dev:/dev:ro
+      - ./AGV-Navigation/src:/root/workspace/src:rw
+      - ./AGV-Navigation/scripts/entrypoint.sh:/root/workspace/entrypoint.sh:rw
+    entrypoint:
+      - /root/workspace/entrypoint.sh
+    depends_on:
+      - simulation
+    tty: true
+    stdin_open: true
+    privileged: true
+    network_mode: host
+    hostname: agv
