@@ -23,3 +23,10 @@ docker compose pull
 ```sh
 export SERVO_PORT=/dev/ttyUSB0
 ```
+
+4. Enable gazebo gui for simulation:
+
+
+```sh
+export GAZEBO_GUI=1
+```
