@@ -3,7 +3,7 @@ version: "3.9"
 services:
   simulation:
     container_name: simulation
-    image: ghcr.io/jakubczech/agv-simulation-ros2-gazebo:develop
+    image: ghcr.io/jakubczech/agv-simulation-ros2-gazebo:main
     environment:
       - DISPLAY=$DISPLAY
     volumes:
@@ -20,9 +20,29 @@ services:
     network_mode: host
     hostname: agv
 
+  # controller:
+  #   container_name: controller
+  #   image: ghcr.io/jakubczech/agv-controller:main
+  #   environment:
+  #     - DISPLAY=$DISPLAY
+  #   volumes:
+  #     - /dev:/dev:ro
+  #     - ./AGV-Controller/src/odometry:/root/workspace/src/odometry:rw
+  #     - ./AGV-Controller/src/controller:/root/workspace/src/controller:rw
+  #     - ./AGV-Controller/src/scan:/root/workspace/src/scan:rw
+  #     - ./AGV-Controller/scripts/entrypoint.sh:/root/workspace/entrypoint.sh:rw
+  #   entrypoint:
+  #     - /root/workspace/entrypoint.sh
+  #   tty: true
+  #   stdin_open: true
+  #   privileged: true
+  #   network_mode: host
+  #   hostname: agv
+
   navigation:
     container_name: navigation
-    image: ghcr.io/jakubczech/agv-navigation:simulation
+    image: ghcr.io/jakubczech/agv-navigation:main
+    # image: agv:navigation
     environment:
       - DISPLAY=$DISPLAY
     volumes:
