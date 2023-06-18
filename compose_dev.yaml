@@ -3,7 +3,7 @@ version: "3.9"
 services:
   simulation:
     container_name: simulation
-    image: ghcr.io/jakubczech/agv-simulation-ros2-gazebo:main
+    image: ghcr.io/jakubczech/agv-simulation-ros2-gazebo:develop
     environment:
       - DISPLAY=$DISPLAY
       - GAZEBO_GUI=$GAZEBO_GUI
@@ -36,7 +36,7 @@ services:
 
   navigation:
     container_name: navigation
-    image: ghcr.io/jakubczech/agv-navigation:main
+    image: ghcr.io/jakubczech/agv-navigation:develop
     environment:
       - DISPLAY=$DISPLAY
     volumes:
@@ -70,3 +70,18 @@ services:
     privileged: true
     network_mode: host
     hostname: agv
+
+  visualization:
+    container_name: visualization
+    image: ghcr.io/jakubczech/agv-remote:main
+    tty: true
+    stdin_open: true
+    privileged: true
+    network_mode: host
+    hostname: agv
+    volumes:
+      - /dev:/dev:ro
+      - ./AGV-Remote/src_files/src:/root/workspace/src:rw
+    environment:
+      - DISPLAY=$DISPLAY
+      - GAZEBO_GUI=$GAZEBO_GUI

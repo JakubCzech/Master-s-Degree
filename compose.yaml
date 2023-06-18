@@ -4,9 +4,6 @@ services:
   simulation:
     container_name: simulation
     image: ghcr.io/jakubczech/agv-simulation-ros2-gazebo:main
-    environment:
-      - DISPLAY=$DISPLAY
-      - GAZEBO_GUI=$GAZEBO_GUI
     tty: true
     stdin_open: true
     privileged: true
@@ -41,3 +38,15 @@ services:
     privileged: true
     network_mode: host
     hostname: agv
+
+  visualization:
+    container_name: visualization
+    image: ghcr.io/jakubczech/agv-remote:main
+    tty: true
+    stdin_open: true
+    privileged: true
+    network_mode: host
+    hostname: agv
+    environment:
+      - DISPLAY=$DISPLAY
+      - GAZEBO_GUI=$GAZEBO_GUI

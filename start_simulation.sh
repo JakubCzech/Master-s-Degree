@@ -1,4 +1,5 @@
 #!/bin/bash
-docker compose up -d simulation navigation && docker compose logs -f simulation navigation
-docker compose kill simulation navigation
-docker compose rm -f
+xhost +
+docker compose -f compose_dev.yaml up -d simulation navigation && docker compose -f compose_dev.yaml logs -f simulation navigation
+docker compose -f compose_dev.yaml kill simulation navigation
+docker compose -f compose_dev.yaml rm -f simulation navigation
