@@ -3,7 +3,7 @@ version: "3.9"
 services:
   simulation:
     container_name: simulation
-    image: ghcr.io/jakubczech/agv-simulation-ros2-gazebo:develop
+    image: ghcr.io/jakubczech/agv-simulation-ros2-gazebo:main
     environment:
       - DISPLAY=$DISPLAY
       - GAZEBO_GUI=$GAZEBO_GUI
@@ -36,7 +36,7 @@ services:
 
   navigation:
     container_name: navigation
-    image: ghcr.io/jakubczech/agv-navigation:develop
+    image: ghcr.io/jakubczech/agv-navigation:main
     environment:
       - DISPLAY=$DISPLAY
     volumes:
@@ -45,8 +45,6 @@ services:
       - ./AGV-Navigation/src_files/src/agv_planner:/root/workspace/src/agv_planner:rw
       - ./AGV-Navigation/src_files/src/agv_controller:/root/workspace/src/agv_controller:rw
       - ./AGV-Navigation/scripts/entrypoint.sh:/root/workspace/entrypoint.sh:rw
-    depends_on:
-      - simulation
     tty: true
     stdin_open: true
     privileged: true
@@ -63,8 +61,6 @@ services:
       - /dev:/dev:ro
       - ./ROS2_Kinco_Servo/src_files/src/kinco_driver:/root/workspace/src/kinco_driver:rw
       - ./ROS2_Kinco_Servo/scripts/entrypoint.sh:/root/workspace/entrypoint.sh:rw
-    depends_on:
-      - simulation
     tty: true
     stdin_open: true
     privileged: true
