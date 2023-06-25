@@ -30,17 +30,20 @@ services:
     privileged: true
     network_mode: host
     hostname: agv
+    environment:
+      - SIMULATION=$SIMULATION
+      - MAPPING=$MAPPING
 
   servo:
     container_name: servo
     image: ghcr.io/jakubczech/ros2_kinco_servo:main
-    environment:
-      - SERVO_PORT=$SERVO_PORT
     tty: true
     stdin_open: true
     privileged: true
     network_mode: host
     hostname: agv
+    environment:
+      - SERVO_PORT=$SERVO_PORT
 
   visualization:
     container_name: visualization

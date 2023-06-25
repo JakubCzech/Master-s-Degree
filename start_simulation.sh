@@ -1,5 +1,5 @@
 #!/bin/bash
 xhost +
-docker compose up -d simulation && docker compose logs -f simulation
-docker compose kill simulation
-docker compose rm -f simulation
+docker compose up -d simulation navigation && docker compose logs -f simulation navigation
+docker compose kill simulation navigation
+docker compose rm -f simulation navigation
