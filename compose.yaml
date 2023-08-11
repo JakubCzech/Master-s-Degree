@@ -9,9 +9,8 @@ services:
     privileged: true
     network_mode: host
     hostname: agv
-    environment:
-      - DISPLAY=$DISPLAY
-      - GAZEBO_GUI=$GAZEBO_GUI
+    env_file:
+      - ./docker_env.env
 
   controller:
     container_name: controller
@@ -22,6 +21,8 @@ services:
     network_mode: host
     hostname: agv
     restart: always
+    env_file:
+      - ./docker_env.env
 
   navigation:
     container_name: navigation
@@ -32,19 +33,20 @@ services:
     network_mode: host
     hostname: agv
     restart: always
-
+    env_file:
+      - ./docker_env.env
 
   servo:
     container_name: servo
     image: ghcr.io/jakubczech/ros2_kinco_servo:main
-    environment:
-      - SERVO_PORT=$SERVO_PORT
     tty: true
     stdin_open: true
     privileged: true
     network_mode: host
     hostname: agv
     restart: always
+    env_file:
+      - ./docker_env.env
 
   visualization:
     container_name: visualization
@@ -54,5 +56,5 @@ services:
     privileged: true
     network_mode: host
     hostname: agv
-    environment:
-      - DISPLAY=$DISPLAY
+    env_file:
+      - ./docker_env.env

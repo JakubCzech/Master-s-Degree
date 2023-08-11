@@ -38,6 +38,7 @@ services:
     image: ghcr.io/jakubczech/agv-navigation:main
     volumes:
       - /dev:/dev:ro
+      - ./AGV-Navigation/src_files/src/agv_navigation/params/nav2_params_controller.yaml:/root/workspace/src/agv_navigation/params/nav2_params_controller.yaml:rw
       # - ./AGV-Navigation/src_files/src/agv_navigation:/root/workspace/src/agv_navigation:rw
       # - ./AGV-Navigation/src_files/src/agv_planner:/root/workspace/src/agv_planner:rw
       # - ./AGV-Navigation/src_files/src/agv_controller:/root/workspace/src/agv_controller:rw
