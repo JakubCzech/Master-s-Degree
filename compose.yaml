@@ -9,6 +9,9 @@ services:
     privileged: true
     network_mode: host
     hostname: agv
+    environment:
+      - DISPLAY=$DISPLAY
+      - GAZEBO_GUI=$GAZEBO_GUI
 
   controller:
     container_name: controller
@@ -53,4 +56,3 @@ services:
     hostname: agv
     environment:
       - DISPLAY=$DISPLAY
-      - GAZEBO_GUI=$GAZEBO_GUI

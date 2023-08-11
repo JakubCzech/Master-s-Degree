@@ -4,9 +4,6 @@ services:
   simulation:
     container_name: simulation
     image: ghcr.io/jakubczech/agv-simulation-ros2-gazebo:main
-    environment:
-      - DISPLAY=$DISPLAY
-      - GAZEBO_GUI=$GAZEBO_GUI
     volumes:
       - /dev:/dev:ro
       - ./AGV-Simulation-ROS2-Gazebo/src_files/src/agv_simulation:/root/workspace/src/agv_simulation:rw
@@ -18,12 +15,13 @@ services:
     privileged: true
     network_mode: host
     hostname: agv
+    environment:
+      - DISPLAY=$DISPLAY
+      - GAZEBO_GUI=$GAZEBO_GUI
 
   controller:
     container_name: controller
     image: ghcr.io/jakubczech/agv-controller:main
-    environment:
-      - DISPLAY=$DISPLAY
     volumes:
       - /dev:/dev:ro
       - ./AGV-Controller/src_files/src:/root/workspace/src:rw
@@ -37,26 +35,25 @@ services:
   navigation:
     container_name: navigation
     image: ghcr.io/jakubczech/agv-navigation:main
-    environment:
-      - DISPLAY=$DISPLAY
     volumes:
       - /dev:/dev:ro
       - ./AGV-Navigation/src_files/src/agv_navigation:/root/workspace/src/agv_navigation:rw
       - ./AGV-Navigation/src_files/src/agv_planner:/root/workspace/src/agv_planner:rw
       - ./AGV-Navigation/src_files/src/agv_controller:/root/workspace/src/agv_controller:rw
+      - ./AGV-Navigation/src_files/src/agv_waypoint_sender:/root/workspace/src/agv_waypoint_sender:rw
       - ./AGV-Navigation/scripts/entrypoint.sh:/root/workspace/entrypoint.sh:rw
     tty: true
     stdin_open: true
     privileged: true
     network_mode: host
     hostname: agv
+    environment:
+      - SIMULATION=$SIMULATION
+      - MAPPING=$MAPPING
 
   servo:
     container_name: servo
     image: ghcr.io/jakubczech/ros2_kinco_servo:main
-    environment:
-      - DISPLAY=$DISPLAY
-      - SERVO_PORT=$SERVO_PORT
     volumes:
       - /dev:/dev:ro
       - ./ROS2_Kinco_Servo/src_files/src/kinco_driver:/root/workspace/src/kinco_driver:rw
@@ -66,6 +63,8 @@ services:
     privileged: true
     network_mode: host
     hostname: agv
+    environment:
+      - SERVO_PORT=$SERVO_PORT
 
   visualization:
     container_name: visualization
@@ -78,6 +77,7 @@ services:
     volumes:
       - /dev:/dev:ro
       - ./AGV-Remote/src_files/src:/root/workspace/src:rw
+      - ./AGV-Remote/scripts/entrypoint.sh:/root/workspace/entrypoint.sh:rw
     environment:
       - DISPLAY=$DISPLAY
-      - GAZEBO_GUI=$GAZEBO_GUI
+      - TOOL=$TOOL
