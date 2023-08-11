@@ -1,8 +1,8 @@
 #!/bin/bash
 xhost +
 export SIMULATION="True"
-export TOOL=rviz
-export DEBUG="True"
+# export TOOL=rviz
+# export DEBUG="True"
 # for in params_for_tests/*; do
 for file in params_for_tests/*; do
     docker compose -f compose_dev.yaml kill simulation navigation 
