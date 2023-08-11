@@ -50,6 +50,7 @@ services:
     environment:
       - SIMULATION=$SIMULATION
       - MAPPING=$MAPPING
+      - DEBUG=$DEBUG
 
   servo:
     container_name: servo
