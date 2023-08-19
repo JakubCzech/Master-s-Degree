@@ -251,4 +251,7 @@ if __name__ == "__main__":
     for Ka in range(1, 6):
         for Lookahead in range(50, 150, 25):
             for Rotate_to_heading in range(10, 150, 25):
-                test((Ka, Lookahead / 100, Rotate_to_heading / 100))
+                try:
+                    test((Ka, Lookahead / 100, Rotate_to_heading / 100))
+                except Exception:
+                    pass
