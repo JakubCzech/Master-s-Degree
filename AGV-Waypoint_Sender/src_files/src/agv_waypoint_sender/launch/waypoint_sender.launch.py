@@ -2,6 +2,7 @@ import launch
 import launch_ros.actions
 from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration
+from launch.substitutions import TextSubstitution
 
 
 def generate_launch_description():
@@ -12,8 +13,14 @@ def generate_launch_description():
         default_value="Default test_name",
         description="Whether run a SLAM",
     )
+    declare_log_level_cmd = DeclareLaunchArgument(
+        "log_level",
+        default_value=TextSubstitution(text="ERROR"),
+        description="log level",
+    )
     return launch.LaunchDescription(
         [
+            declare_log_level_cmd,
             declare_name_cmd,
             launch_ros.actions.Node(
                 package="agv_waypoint_sender",

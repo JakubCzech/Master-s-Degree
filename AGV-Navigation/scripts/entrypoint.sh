@@ -3,7 +3,7 @@ set -e
 source "/opt/ros/$ROS_DISTRO/setup.bash"
 if [ "$DEBUG" = "true" ] || [ "$DEBUG" = "True" ] 
 then
-    colcon build --packages-select agv_navigation
+    colcon build --packages-select agv_controller agv_navigation
     echo "Debug is set, using debug build"
 fi
 source "install/setup.bash"

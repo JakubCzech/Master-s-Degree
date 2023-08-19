@@ -77,7 +77,7 @@ class GoalPublisher(Node):
             while not self.navigator.isTaskComplete():
                 self.publish_points()
                 now = self.navigator.get_clock().now()
-                if now - nav_start > Duration(seconds=150.0):
+                if now - nav_start > Duration(seconds=120.0):
                     self.navigator.cancelTask()
                     self.get_logger().info("Canceling task")
                     break
@@ -104,11 +104,15 @@ class GoalPublisher(Node):
             line += f"{t.nanoseconds},"
             total += t.nanoseconds
         line += f"{total}"
+        self.get_logger().info(f"Test results: {line} Test results:")
+
         self.navigator.lifecycleShutdown()
         self.navigator.destroy_node()
         exit(f"Test results: {line} Test results:")
 
     def end(self):
+        self.get_logger().info(f"Test results: FAILED Test results:")
+
         self.navigator.lifecycleShutdown()
         self.navigator.destroy_node()
         exit(f"Test results: FAILED Test results:")

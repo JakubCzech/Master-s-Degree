@@ -131,9 +131,9 @@ class Test:
     def run_sender(
         self, test_title: str, ros_domain_id: int
     ) -> docker.models.containers.Container:
+        command = f"/bin/bash -c 'source install/setup.bash &&  ros2 launch agv_waypoint_sender waypoint_sender.launch.py test_name:=\"{test_title}\"'"
         try:
-            command = f"/bin/bash -c 'source install/setup.bash &&  ros2 launch agv_waypoint_sender waypoint_sender.launch.py test_name:=\"{test_title}\"'"
-            result = self.client.containers.run(
+            test = self.client.containers.run(
                 "ghcr.io/jakubczech/agv-sender:main",
                 name=f'{CONTAINER_NAMES["sender"]}_{ros_domain_id}',
                 volumes={
@@ -152,36 +152,17 @@ class Test:
                     "ROS_DOMAIN_ID": ros_domain_id,
                 },
                 command=command,
-                detach=False,
-                stdout=True,
+                detach=True,
             )
-            try:
-                result = result.decode("utf-8")
-                if result.split("Test results:"):
-                    if result.split("Test results:")[1] == " FAILED Test results:":
+            for line in test.logs(stream=True, follow=True):
+                self.logger.info(line.decode("utf-8").replace("\n", ""))
+                if "Test results:" in line.decode("utf-8"):
+                    if "FAILED" in line.decode("utf-8").split("Test results:"):
                         return False
                     else:
-                        return result.split("Test results:")[1].split(",")
-            except Exception:
-                return False
-
-        except docker.errors.ContainerError as e:
-            try:
-                print(e.stderr.decode("utf-8"))
-                if e.stderr.decode("utf-8").split("Test results:"):
-                    if (
-                        e.stderr.decode("utf-8").split("Test results:")[1]
-                        == " FAILED Test results:"
-                    ):
-                        return False
-                    else:
-                        return (
-                            e.stderr.decode("utf-8")
-                            .split("Test results:")[1]
-                            .split(",")
-                        )
-            except Exception:
-                return False
+                        return line.decode("utf-8").split("Test results:")[1].split(",")
+        except Exception:
+            return False
 
     def run_visualization(
         self, tool: str, ros_domain_id: int
@@ -233,7 +214,8 @@ class Test:
 
 
 if __name__ == "__main__":
-    results_file_name = "results1.txt"
+    results_file_name = "NavfnPlanner.txt"
+    system("clear")
 
     def test(params):
         Kp, Lookahead, Rotate_to_heading = params
@@ -246,9 +228,11 @@ if __name__ == "__main__":
             "w",
         ) as f:
             f.write(params)
-        test = Test("Test")
+        test = Test("NavfnPlanner")
         time.sleep(5)
-        results = test.run_test(f"Test {Ka} {Lookahead} {Rotate_to_heading}")
+        results = test.run_test(f"NavfnPlanner {Ka} {Lookahead} {Rotate_to_heading}")
+        system("clear")
+
         if results:
             print(results)
             with open(results_file_name, "a") as f:
@@ -257,9 +241,16 @@ if __name__ == "__main__":
             print(f"Test failed {Ka} {Lookahead} {Rotate_to_heading}")
 
     for Ka in range(1, 6):
-        for Lookahead in [0.75, 1, 1.25, 1.5, 1.75]:
-            for Rotate_to_heading in [0.5, 1.0, 1.5]:
-                try:
-                    test((Ka, Lookahead, Rotate_to_heading))
-                except Exception:
-                    pass
+        # for Lookahead in [0.75, 1, 1.25, 1.5, 1.75]:
+        #     for Rotate_to_heading in [0.5, 1.0, 1.5]:
+        # try:
+        #     test((Ka, Lookahead, Rotate_to_heading))
+        # except Exception:
+        #     pass
+
+        Lookahead = 1.5
+        Rotate_to_heading = 1.5
+        try:
+            test((Ka, Lookahead, Rotate_to_heading))
+        except Exception:
+            pass

@@ -284,12 +284,12 @@ controller_server:
     FollowPath:
       plugin: "agv_controller::AGVController"
       debug_trajectory_details: True
-      lookahead_dist: 0.75
-      rotate_to_heading_min_angle: 0.5
+      lookahead_dist: 1.5
+      rotate_to_heading_min_angle: 1.5
       #VFO params
       max_speed: 1.0
-      Kp: 2
-      Ka: 1
+      Kp: 2.0
+      Ka: 1.0
     # Progress checker parameters
     progress_checker:
       plugin: "nav2_controller::SimpleProgressChecker"
