@@ -284,7 +284,7 @@ controller_server:
     FollowPath:
       plugin: "agv_controller::AGVController"
       debug_trajectory_details: True
-      lookahead_dist: 0.5
+      lookahead_dist: 0.75
       rotate_to_heading_min_angle: 0.1
       #VFO params
       max_speed: 1.0
