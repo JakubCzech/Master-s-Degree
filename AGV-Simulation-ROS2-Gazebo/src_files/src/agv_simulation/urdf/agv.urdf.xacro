@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<robot name="agv" xmlns:xacro="http://ros.org/wiki/xacro">
+  <!-- Disable visualization -->
+  <xacro:arg name="visualize" default="false" />
+  <!-- Scanner params -->
+  <xacro:property name="scan_front_pos" value="0.34 -0.21 ${-body_height/2+scan_high}" />
+  <xacro:property name="scan_rear_pos" value="-0.34 0.21 ${-body_height/2+scan_high}" />
+  <xacro:property name="scan_front_ori" value="0.0 0.0 -0.7798163" />
+  <xacro:property name="scan_rear_ori" value="0.0 0.0 2.366194491" />
+  <xacro:property name="scan_high" value="0.195" />
+  <xacro:property name="scan_mass" value="0.5" />
+  <xacro:property name="scan_vis_ori" value="-1.57 0 0" />
+  <xacro:property name="scan_vis_pos" value="0 0 0" />
+  <xacro:property name="scan_samples" value="720" />
+  <xacro:property name="scan_min_angle" value="-2.34" />
+  <xacro:property name="scan_max_angle" value="2.34" />
+  <xacro:property name="scan_range_min" value="0.10" />
+  <xacro:property name="scan_range_max" value="100.0" />
+  <xacro:property name="scan_range_resolution" value="0.05" />
+  <xacro:property name="scan_frequency" value="40" />
+  <xacro:property name="visualize" value="false" />
+
+  <!-- Agv base params -->
+  <xacro:arg name="robot_name" default="agv" />
+  <xacro:property name="base_model" default="agv.dae" />
+  <xacro:property name="base_scale" value="0.001 0.001 0.001" />
+  <xacro:property name="body_width" value="0.825" />
+  <xacro:property name="body_length" value="0.550" />
+  <xacro:property name="body_height" value="0.281" />
+  <!-- Nuc -->
+  <!-- <xacro:property name="pkg_dir"
+  value="/home/nuc/Documents/GitHub/AGV-Simulation-ROS2-Gazebo/src/agv_simulation"
+  /> -->
+  <!-- Laptop -->
+  <!-- <xacro:property name="pkg_dir"
+  value="/home/jakub/Documents/GitHub/AGV-Simulation-ROS2-Gazebo/src/agv_simulation"
+  /> -->
+  <!-- Docker -->
+  <xacro:property name="pkg_dir"
+    value="/root/workspace/src/agv_simulation"
+  />
+
+  <!-- Simulation params -->
+  <xacro:arg name="frequency" default="100" />
+
+  <gazebo>
+    <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
+      <command_topic>cmd_vel</command_topic>
+      <odometry_topic>odom</odometry_topic>
+      <odometry_frame>odom</odometry_frame>
+      <odometry_rate>20.0</odometry_rate>
+      <robot_base_frame>base_footprint</robot_base_frame>
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <robotNamespace>
+        <remapping>/tf:=tf</remapping>
+      </robotNamespace>
+      <ros>
+        <remapping>/tf:=tf</remapping>
+      </ros>
+      <!-- Set odom covariance -->
+      <!-- <covariance_x>0.0001</covariance_x>
+      <covariance_y>0.0001</covariance_y>
+      <covariance_yaw>0.0001</covariance_yaw> -->
+    </plugin>
+  </gazebo>
+  <!-- Base_footprint link -->
+  <link name="base_footprint">
+    <origin xyz="0 0 0" rpy="0 0 3.14" />
+  </link>
+  <!-- Base_link link -->
+  <link name="base_link">
+    <inertial>
+      <mass value="120" />
+      <origin xyz="0 0 0.0" />
+      <inertia ixx="7.8" ixy="0.0" ixz="0" iyy="7.8" iyz="0.0" izz="7.8" />
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0" />
+      <geometry>
+        <mesh
+          filename="${pkg_dir}/models/agv/meshes/agv.dae"
+          scale="${base_scale}" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0" />
+      <geometry>
+        <mesh
+          filename="${pkg_dir}/models/agv/meshes/agv.dae"
+          scale="${base_scale}" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- Scanners links -->
+  <link name="scan_front_link" type="laser" />
+  <link name="scan_rear_link" type="laser" />
+  <!-- Base_footprint joint  to base_link -->
+  <joint name="base_footprint_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.0" />
+    <parent link="base_footprint" />
+    <child link="base_link" />
+  </joint>
+  <!-- Scanners joints -->
+  <joint name="scan_front_joint" type="fixed">
+    <origin rpy="${scan_front_ori}" xyz="${scan_front_pos}" />
+    <parent link="base_link" />
+    <child link="scan_front_link" />
+  </joint>
+  <joint name="scan_rear_joint" type="fixed">
+    <origin rpy="${scan_rear_ori}" xyz="${scan_rear_pos}" />
+    <parent link="base_link" />
+    <child link="scan_rear_link" />
+  </joint>
+  <!-- Scanners references -->
+  <gazebo reference="scan_front_link">
+    <sensor name="scan_front_sensor" type="ray">
+      <always_on>true</always_on>
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>${visualize}</visualize>
+      <update_rate>${scan_frequency}</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>${scan_samples}</samples>
+            <resolution>1</resolution>
+            <min_angle>${scan_min_angle}</min_angle>
+            <max_angle>${scan_max_angle}</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>${scan_range_min}</min>
+          <max>${scan_range_max}</max>
+          <resolution>${scan_range_resolution}</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin filename="libgazebo_ros_ray_sensor.so" name="scan_front_ls">
+        <ros>
+          <remapping>~/out:=/front_scanner/scan</remapping>
+        </ros>
+        <output_type>sensor_msgs/LaserScan</output_type>
+        <frame_name>front_scanner/scan</frame_name>
+
+      </plugin>
+      <!-- <plugin filename="libgazebo_ros_ray_sensor.so" name="scan_front_pc">
+        <ros>
+          <remapping>~/out:=/front_scanner/cloud</remapping>
+        </ros>
+        <output_type>sensor_msgs/PointCloud2</output_type>
+        <frame_name>front_scanner/cloud</frame_name>
+
+      </plugin>
+      <plugin filename="libgazebo_ros_ray_sensor.so" name="scan_front_r">
+        <ros>
+          <remapping>~/out:=/front_scanner/range</remapping>
+        </ros>
+        <output_type>sensor_msgs/Range</output_type>
+        <frame_name>front_scanner/range</frame_name>
+
+      </plugin> -->
+    </sensor>
+  </gazebo>
+  <gazebo reference="scan_rear_link">
+    <sensor name="scan_rear_sensor" type="ray">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>${visualize}</visualize>
+      <update_rate>${scan_frequency}</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>${scan_samples}</samples>
+            <resolution>1</resolution>
+            <min_angle>${scan_min_angle}</min_angle>
+            <max_angle>${scan_max_angle}</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>${scan_range_min}</min>
+          <max>${scan_range_max}</max>
+          <resolution>${scan_range_resolution}</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin filename="libgazebo_ros_ray_sensor.so" name="scan_rear_ls">
+        <ros>
+          <remapping>~/out:=/rear_scanner/scan</remapping>
+        </ros>
+        <output_type>sensor_msgs/LaserScan</output_type>
+        <frame_name>rear_scanner/scan</frame_name>
+
+      </plugin>
+      <!-- <plugin filename="libgazebo_ros_ray_sensor.so" name="scan_rear_pc">
+        <ros>
+          <remapping>~/out:=/rear_scanner/cloud</remapping>
+        </ros>
+        <output_type>sensor_msgs/PointCloud2</output_type>
+        <frame_name>rear_scanner/cloud</frame_name>
+      </plugin> -->
+      <!-- <plugin filename="libgazebo_ros_ray_sensor.so" name="scan_rear_r">
+        <ros>
+          <remapping>~/out:=/rear_scanner/range</remapping>
+        </ros>
+        <output_type>sensor_msgs/Range</output_type>
+        <frame_name>rear_scanner/range</frame_name>
+      </plugin> -->
+
+    </sensor>
+  </gazebo>
+</robot>

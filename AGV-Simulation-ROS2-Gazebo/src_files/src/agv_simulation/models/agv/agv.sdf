@@ -1,0 +1,117 @@
+<sdf version='1.7'>
+  <model name='agv'>
+    <link name='base_footprint'>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>120</mass>
+        <inertia>
+          <ixx>7.8</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>7.8</iyy>
+          <iyz>0</iyz>
+          <izz>7.8</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_footprint_fixed_joint_lump__base_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>/root/workspace/src/agv_simulation/models/agv/meshes/agv.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_footprint_fixed_joint_lump__base_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>/root/workspace/src/agv_simulation/models/agv/meshes/agv.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <sensor name='scan_front_sensor' type='ray'>
+        <always_on>1</always_on>
+        <visualize>0</visualize>
+        <update_rate>40</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>720</samples>
+              <resolution>1</resolution>
+              <min_angle>-2.34</min_angle>
+              <max_angle>2.34</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.1</min>
+            <max>100</max>
+            <resolution>0.05</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </ray>
+        <plugin name='scan_front_ls' filename='libgazebo_ros_ray_sensor.so'>
+          <ros>
+            <remapping>~/out:=/front_scanner/scan</remapping>
+          </ros>
+          <output_type>sensor_msgs/LaserScan</output_type>
+          <frame_name>front_scanner/scan</frame_name>
+        </plugin>
+        <pose>0.34 -0.21 0.0545 0 0 -0.779816</pose>
+      </sensor>
+      <sensor name='scan_rear_sensor' type='ray'>
+        <visualize>0</visualize>
+        <update_rate>40</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>720</samples>
+              <resolution>1</resolution>
+              <min_angle>-2.34</min_angle>
+              <max_angle>2.34</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.1</min>
+            <max>100</max>
+            <resolution>0.05</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </ray>
+        <plugin name='scan_rear_ls' filename='libgazebo_ros_ray_sensor.so'>
+          <ros>
+            <remapping>~/out:=/rear_scanner/scan</remapping>
+          </ros>
+          <output_type>sensor_msgs/LaserScan</output_type>
+          <frame_name>rear_scanner/scan</frame_name>
+        </plugin>
+        <pose>-0.34 0.21 0.0545 0 -0 2.36619</pose>
+      </sensor>
+    </link>
+    <static>0</static>
+    <plugin name='object_controller' filename='libgazebo_ros_planar_move.so'>
+      <command_topic>cmd_vel</command_topic>
+      <odometry_topic>odom</odometry_topic>
+      <odometry_frame>odom</odometry_frame>
+      <odometry_rate>20.0</odometry_rate>
+      <robot_base_frame>base_footprint</robot_base_frame>
+      <publish_odom>1</publish_odom>
+      <publish_odom_tf>1</publish_odom_tf>
+      <robotNamespace>
+        <remapping>/tf:=tf</remapping>
+      </robotNamespace>
+      <ros>
+        <remapping>/tf:=tf</remapping>
+      </ros>
+    </plugin>
+  </model>
+</sdf>

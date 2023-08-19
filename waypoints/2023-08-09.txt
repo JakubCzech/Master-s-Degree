@@ -1,0 +1,14 @@
+2023-08-09 13:22:11.762761
+Filename,P1,P2,P3,P4,P5,P6,Total,Failed
+navfn_planner,54294881048,119261452832,70101768870,84260424653,88753958205,99351067489,516023553097,0
+smac_planner_hybrid,39217539835,66880369147,75652175390,73213776563,150048023376,81852722182,486864606493,0
+theta_star,38818843755,54709623894,77956297811,78064689994,94087632261,90398225768,434035313483,0
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 1.00 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1 \n

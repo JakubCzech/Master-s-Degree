@@ -1,0 +1,19 @@
+agv:
+  ros__parameters:
+    mb_base_data: 54500
+    mb_manual_ctrl: 65500
+    mb_tick_ms: 61756
+    mb_auto_ctrl: 33792
+    mb_manual: 33792
+    robot_ip: "127.0.0.1"
+    robot_port: 1502
+    robot_id: 1
+
+    # Velocity limits and scaling:
+    trans_vel_limit: 900 # from 0 to 1000 # mm/s
+    # trans_vel_scale: 1.0  # from 0 to 1
+    rot_vel_limit: 120 # from 0 to 100  # deg/s
+    # rot_vel_scale: 0.8  # from 0 to 1
+
+    delta_t: 200 # 500  # +10 na obliczenia
+    frequency: 5 # 5

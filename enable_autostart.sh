@@ -1,2 +1,0 @@
-sudo systemctl enable mobot_compose_launch.service
-sudo systemctl start mobot_compose_launch.service

@@ -1,0 +1,6 @@
+<library path="agv_planner_plugin">
+    <class name="agv_planner::AGVPlanner" type="agv_planner::AGVPlanner"
+        base_class_type="nav2_core::GlobalPlanner">
+        <description>This is an example plugin which produces straight path.</description>
+    </class>
+</library>

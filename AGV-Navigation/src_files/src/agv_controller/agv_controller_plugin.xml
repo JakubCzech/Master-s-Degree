@@ -1,0 +1,8 @@
+<library path="agv_controller">
+    <class name="agv_controller::AGVController" type="agv_controller::AGVController"
+        base_class_type="nav2_core::Controller">
+        <description>
+            This is controller for AGV robot with mecanum wheels.
+        </description>
+    </class>
+</library>

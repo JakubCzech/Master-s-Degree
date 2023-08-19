@@ -1,0 +1,141 @@
+2023-08-10 21:25:32.787485
+Filename,P1,P2,P3,P4,P5,P6,Total,Failed
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1navfn_planner,37874453172,88826255253,73963541100,77489366163,93877134029,98878009849,470908759566,0
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.2navfn_planner,42595895235,114631410567,87423108963,65558185454,78836706325,91911447888,480956754432,0
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.3
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.4navfn_planner,52547510044,150023066294,69361358006,71767130953,123877107241,101797864208,569374036746,0
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.5Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.6Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.7Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.8Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.9
+Ka: 2.0 Kp: 1.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.1navfn_planner,27825990729,44417363764,61177853417,50553810492,82231736500,69468484237,335675239139,0
+Ka: 2.0 Kp: 1.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.2
+Ka: 2.0 Kp: 1.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.3navfn_planner,43602119301,49439339733,70538608978,51650289668,74230216599,70061614976,359522189255,0
+Ka: 2.0 Kp: 1.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.4Ka: 2.0 Kp: 1.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.5
+Ka: 2.0 Kp: 1.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.6navfn_planner,37379712922,51546973764,56963955230,62011774060,78410584736,68474916737,354787917449,0
+Ka: 2.0 Kp: 1.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.7navfn_planner,28332843293,50037657623,56561918310,44823700851,80695513177,68201562424,328653195678,0
+Ka: 2.0 Kp: 1.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.8navfn_planner,44919032129,48425754784,55168502648,44813101089,79828875202,68652135816,341807401668,0
+Ka: 2.0 Kp: 1.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.9navfn_planner,39092380394,46621452888,58569611047,46245178880,74199932158,69065700436,333794255803,0
+Ka: 2.0 Kp: 1.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.1Ka: 2.0 Kp: 1.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.2Ka: 2.0 Kp: 1.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.3Ka: 2.0 Kp: 1.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.4Ka: 2.0 Kp: 1.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.5Ka: 2.0 Kp: 1.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.6
+Ka: 2.0 Kp: 1.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.7navfn_planner,28635943799,45511981630,53959290572,51843187448,75369037425,65657801067,320977241941,0
+Ka: 2.0 Kp: 1.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.8navfn_planner,36164906923,50750998595,71544322260,49951422042,80298524953,70588872086,359299046859,0
+Ka: 2.0 Kp: 1.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.9Ka: 2.0 Kp: 1.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.1Ka: 2.0 Kp: 1.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.2Ka: 2.0 Kp: 1.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.3
+Ka: 2.0 Kp: 1.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.4navfn_planner,42500817328,49839190457,56166393634,55271518060,83436608418,83533078549,370747606446,0
+Ka: 2.0 Kp: 1.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.5
+Ka: 2.0 Kp: 1.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.6navfn_planner,30045372824,49729022452,55157309574,54356808241,109651112136,101240840348,400180465575,0
+Ka: 2.0 Kp: 1.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.7navfn_planner,28339454070,43904623067,59584676575,66337824792,150074792079,61267685868,409509056451,0
+Ka: 2.0 Kp: 1.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.8
+Ka: 2.0 Kp: 1.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.9navfn_planner,38177791215,99569751481,66517388894,55177690218,87923010814,119223370720,466589003342,0
+Ka: 4.0 Kp: 2.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1navfn_planner,21104450167,36369103563,46532663213,104913935579,52770089420,55798353779,317488595721,0
+Ka: 4.0 Kp: 2.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.2Ka: 4.0 Kp: 2.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.3
+Ka: 4.0 Kp: 2.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.4navfn_planner,23914164756,35667754884,64899290959,72856239210,56184323988,88738023452,342259797249,0
+Ka: 4.0 Kp: 2.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.5Ka: 4.0 Kp: 2.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.6Ka: 4.0 Kp: 2.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.7
+Ka: 4.0 Kp: 2.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.8navfn_planner,21697373659,35369887930,49035927647,85912285257,55482817187,53895902579,301394194259,0
+Ka: 4.0 Kp: 2.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.9
+Ka: 4.0 Kp: 2.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.1navfn_planner,22405185315,72037876796,39589708032,96668833036,52667578382,49658212339,333027393900,0
+Ka: 4.0 Kp: 2.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.2
+Ka: 4.0 Kp: 2.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.3navfn_planner,20692428447,132339376166,47223661228,97495984850,49958859247,77865530538,425575840476,0
+Ka: 4.0 Kp: 2.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.4Ka: 4.0 Kp: 2.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.5
+Ka: 4.0 Kp: 2.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.6navfn_planner,24624542188,43405080391,52352588613,44431521058,54801572555,62228692905,281843997710,0
+Ka: 4.0 Kp: 2.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.7navfn_planner,25825079269,37369093677,40292789683,40694197287,56889983210,58399871757,259471014883,0
+Ka: 4.0 Kp: 2.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.8navfn_planner,22002087332,37977926984,52364350120,42807732102,50745625634,62936471777,268834193949,0
+Ka: 4.0 Kp: 2.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.9navfn_planner,21301214869,57275086811,40185718659,45926867467,53071684943,49092982128,266853554877,0
+Ka: 4.0 Kp: 2.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.1navfn_planner,21608182667,29831018287,42898996983,43611147543,59697414673,95884324105,293531084258,0
+Ka: 4.0 Kp: 2.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.2
+Ka: 4.0 Kp: 2.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.3navfn_planner,22910495137,31350943796,37372962692,41504684917,63826432026,103440229167,300405747735,0
+Ka: 4.0 Kp: 2.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.4
+Ka: 4.0 Kp: 2.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.5navfn_planner,23506747213,32056584586,42095655351,39787291533,81104549912,59604010183,278154838778,0
+Ka: 4.0 Kp: 2.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.6navfn_planner,25111909610,31557100198,58667433926,47640361593,62703383072,110173275983,335853464382,0
+Ka: 4.0 Kp: 2.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.7navfn_planner,22809944569,63515548642,37271498232,44417469505,65245603586,74088590585,307348655119,0
+Ka: 4.0 Kp: 2.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.8
+Ka: 4.0 Kp: 2.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.9navfn_planner,24512509677,72243243605,39683549335,41800124401,72573239641,125393674955,376206341614,0
+Ka: 4.0 Kp: 2.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.1
+Ka: 4.0 Kp: 2.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.2navfn_planner,24217885511,33254731060,38480150889,42707402067,62020160292,96390350988,297070680807,0
+Ka: 4.0 Kp: 2.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.3navfn_planner,22808193722,39693135808,37673344222,45825454618,105043756072,96029043121,347072927563,0
+Ka: 4.0 Kp: 2.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.4navfn_planner,27521259887,66702648408,38386210377,43225682285,150043174008,39901828770,365780803735,0
+Ka: 4.0 Kp: 2.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.5navfn_planner,22508901688,28127523982,50730892283,43601793225,62393052170,100125268357,307487431705,0
+Ka: 4.0 Kp: 2.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.6navfn_planner,21900568207,31952707746,46623323973,42899576171,150053214749,56323466643,349752857489,0
+Ka: 4.0 Kp: 2.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.7Ka: 4.0 Kp: 2.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.8
+Ka: 4.0 Kp: 2.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.9navfn_planner,20805264534,34453645778,40693571354,44906980042,56574758919,109455038655,306889259282,0
+Ka: 6.0 Kp: 3.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1
+Ka: 6.0 Kp: 3.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.2navfn_planner,21903139012,32054196145,106202429997,150067347660,44728039569,52589598387,407544750770,0
+Ka: 6.0 Kp: 3.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.3Ka: 6.0 Kp: 3.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.4
+Ka: 6.0 Kp: 3.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.5navfn_planner,21598750273,32657526075,67818787105,150031778962,52381162270,57321066769,381809071454,0
+Ka: 6.0 Kp: 3.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.6navfn_planner,23204372035,141157712346,140093021666,150095819640,51390140177,73339045691,579280111555,0
+Ka: 6.0 Kp: 3.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.7navfn_planner,22301427409,29943749964,57163170499,150026167618,52050842498,93589449669,405074807657,0
+Ka: 6.0 Kp: 3.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.8
+Ka: 6.0 Kp: 3.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.9navfn_planner,20390706963,40892865225,39396043068,106936927421,51359638335,62915699619,321891880631,0
+Ka: 6.0 Kp: 3.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.1navfn_planner,27126249824,31357667669,32347803715,53255048024,83324718696,105171990868,332583478796,0
+Ka: 6.0 Kp: 3.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.2navfn_planner,19093246177,34664593465,53957512933,150067864420,46128283154,104587440566,408498940715,0
+Ka: 6.0 Kp: 3.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.3navfn_planner,23011660621,38671308733,34664207950,38377783784,51744522296,95701208613,282170691997,0
+Ka: 6.0 Kp: 3.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.4
+Ka: 6.0 Kp: 3.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.5navfn_planner,22405583126,33761167923,36973971289,150038431113,45832358266,76692120758,365703632475,0
+Ka: 6.0 Kp: 3.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.6navfn_planner,19692287664,27330284727,38476452631,41103382259,47426272969,148155601699,322184281949,0
+Ka: 6.0 Kp: 3.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.7navfn_planner,28127934934,124116597738,70040776852,150070296648,46252317927,77010516078,495618440177,0
+Ka: 6.0 Kp: 3.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.8
+Ka: 6.0 Kp: 3.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.9navfn_planner,25114998805,150000282289,58481248774,150099417660,54486202192,94427828320,532609978040,0
+Ka: 6.0 Kp: 3.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.1
+Ka: 6.0 Kp: 3.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.2navfn_planner,23611881951,33354336211,65321378125,40800243740,57080489618,99225723660,319394053305,0
+Ka: 6.0 Kp: 3.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.3Ka: 6.0 Kp: 3.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.4
+Ka: 6.0 Kp: 3.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.5navfn_planner,22103629361,66810410533,79380166370,36577960550,89074975178,69080146726,363027288718,0
+Ka: 6.0 Kp: 3.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.6Ka: 6.0 Kp: 3.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.7
+Ka: 6.0 Kp: 3.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.8navfn_planner,21101893536,28727038758,36477002186,150026563468,56380216333,112113975754,404826690035,0
+Ka: 6.0 Kp: 3.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.9navfn_planner,21302891444,32544941723,43308314767,42814529568,57284881069,106187485567,303443044138,0
+Ka: 6.0 Kp: 3.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.1navfn_planner,22004598949,25513488577,68924878601,41798096634,150056773719,42713008115,351010844595,0
+Ka: 6.0 Kp: 3.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.2navfn_planner,19993313955,27831908313,35569023458,37791896906,62213660848,104715934039,288115737519,0
+Ka: 6.0 Kp: 3.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.3Ka: 6.0 Kp: 3.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.4Ka: 6.0 Kp: 3.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.5Ka: 6.0 Kp: 3.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.6
+Ka: 6.0 Kp: 3.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.7navfn_planner,21599017426,32751658469,33868283894,44006819638,55264102952,116167524936,303657407315,0
+Ka: 6.0 Kp: 3.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.8
+Ka: 6.0 Kp: 3.0 Lookahead: 1.50 rotate_to_heading_min_angle: 0.9navfn_planner,22207664790,60689397404,64003802366,150068573406,110271799953,113676535716,520917773635,0
+Ka: 8.0 Kp: 4.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1navfn_planner,21900238360,34460846018,150006996664,150020313913,61867745877,53129986590,471386127422,0
+Ka: 8.0 Kp: 4.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.2navfn_planner,23010022260,33269592127,150073391437,44637830052,81148175336,51786414492,383925425704,0
+Ka: 8.0 Kp: 4.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.3navfn_planner,23314281940,30748085317,138152627529,150016791910,55836323743,150083012339,548151122778,0
+Ka: 8.0 Kp: 4.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.4Ka: 8.0 Kp: 4.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.5Ka: 8.0 Kp: 4.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.6
+Ka: 8.0 Kp: 4.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.7navfn_planner,20601445179,150051120962,32066421260,44327846902,53080972400,150084686536,450212493239,0
+Ka: 8.0 Kp: 4.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.8 \n
+Ka: 8.0 Kp: 4.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.9 \n
+Ka: 8.0 Kp: 4.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.1 \n
+Ka: 8.0 Kp: 4.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.2 \n
+Ka: 8.0 Kp: 4.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.3 \n
+navfn_planner,22301497044,31846545327,34861374918,150049868066,45240122556,96767871718,381067279629,0
+Ka: 8.0 Kp: 4.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.4 \n
+Ka: 8.0 Kp: 4.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.5 \n
+navfn_planner,22811185400,29938333565,53642076425,37580970531,55468078771,114279429141,313720073833,0
+Ka: 8.0 Kp: 4.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.6 \n
+navfn_planner,25518768172,150012000857,27034118761,39496745964,57713176843,123025230411,422800041008,0
+Ka: 8.0 Kp: 4.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.7 \n
+Ka: 8.0 Kp: 4.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.8 \n
+Ka: 8.0 Kp: 4.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.9 \n
+Ka: 8.0 Kp: 4.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.1 \n
+Ka: 8.0 Kp: 4.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.2 \n
+navfn_planner,20496142633,32554488230,37073856522,38484136410,86152552633,106060775575,320821952003,0
+Ka: 8.0 Kp: 4.0 Lookahead: 1.25 rotate_to_heading_min_angle: 0.3 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.2 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.2 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.3 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.4 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.5 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.6 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.7 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.8 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.9 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 1.00 rotate_to_heading_min_angle: 0.1 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.2 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.3 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.4 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.5 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.6 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.7 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.8 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.2 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.1 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.2 \n
+Ka: 2.0 Kp: 1.0 Lookahead: 0.75 rotate_to_heading_min_angle: 0.3 \n

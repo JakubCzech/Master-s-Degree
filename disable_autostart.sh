@@ -1,2 +1,0 @@
-sudo systemctl disable mobot_compose_launch.service
-sudo systemctl stop mobot_compose_launch.service
