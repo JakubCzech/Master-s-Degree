@@ -138,6 +138,10 @@ class Test:
                 name=f'{CONTAINER_NAMES["sender"]}_{ros_domain_id}',
                 volumes={
                     "/dev": {"bind": "/dev", "mode": "ro"},
+                    "/home/jakub/Documents/GitHub/Master-s-Degree/AGV-Waypoint_Sender/data": {
+                        "bind": "/results",
+                        "mode": "rw",
+                    },
                 },
                 privileged=True,
                 network=f"{NETWORK_NAME}_{ros_domain_id}",
@@ -221,11 +225,15 @@ class Test:
             logger.info(line.decode("utf-8"))
 
     def __del__(self):
-        self.remove_containers(self.ros_domain_id)
-        self.remove_network(self.ros_domain_id)
+        try:
+            self.remove_containers(self.ros_domain_id)
+            self.remove_network(self.ros_domain_id)
+        except Exception:
+            pass
 
 
 if __name__ == "__main__":
+    results_file_name = "results1.txt"
 
     def test(params):
         Kp, Lookahead, Rotate_to_heading = params
@@ -238,20 +246,20 @@ if __name__ == "__main__":
             "w",
         ) as f:
             f.write(params)
-        test = Test("Test", 0)
+        test = Test("Test")
         time.sleep(5)
         results = test.run_test(f"Test {Ka} {Lookahead} {Rotate_to_heading}")
         if results:
             print(results)
-            with open("results.txt", "a") as f:
+            with open(results_file_name, "a") as f:
                 f.write(f"{results}\n")
         else:
             print(f"Test failed {Ka} {Lookahead} {Rotate_to_heading}")
 
     for Ka in range(1, 6):
-        for Lookahead in range(75, 150, 25):
-            for Rotate_to_heading in range(10, 150, 50):
+        for Lookahead in [0.75, 1, 1.25, 1.5, 1.75]:
+            for Rotate_to_heading in [0.5, 1.0, 1.5]:
                 try:
-                    test((Ka, Lookahead / 100, Rotate_to_heading / 100))
+                    test((Ka, Lookahead, Rotate_to_heading))
                 except Exception:
                     pass

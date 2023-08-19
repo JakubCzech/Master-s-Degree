@@ -22,5 +22,12 @@ def generate_launch_description():
                     {"test_name": result_file_name},
                 ],
             ),
+            launch_ros.actions.Node(
+                package="agv_waypoint_sender",
+                executable="analyzer",
+                parameters=[
+                    {"test_name": result_file_name},
+                ],
+            ),
         ]
     )

@@ -27,6 +27,9 @@ setup(
     license="MIT",
     tests_require=["pytest"],
     entry_points={
-        "console_scripts": ["waypoint_sender = agv_waypoint_sender.main:main"],
+        "console_scripts": [
+            "waypoint_sender = agv_waypoint_sender.sender:main",
+            "analyzer = agv_waypoint_sender.analyzer:main",
+        ],
     },
 )

@@ -7,6 +7,7 @@ from rclpy.duration import Duration
 from rclpy.node import Node
 from geometry_msgs.msg import PoseStamped
 from nav_msgs.msg import Path
+from geometry_msgs.msg import Twist
 
 WAYPOINTS = [
     [0.8, -18.5, 0, 0, 0, 0.02, 1.0],
@@ -28,12 +29,21 @@ class GoalPublisher(Node):
         )
         # Publish list of all targets to /all_targets
         self.all_targets_publisher = self.create_publisher(Path, "/all_targets", 10)
+
+        self.cmd_vel_subscriber = self.create_subscription(
+            Twist, "/cmd_vel", self.cmd_vel_callback, 10
+        )
         self.navigator = BasicNavigator()
         self.navigator.waitUntilNav2Active()
         self.goal_poses = []
         self.load_points()
         self.publish_points()
         self.point_loop()
+
+    def cmd_vel_callback(self, msg):
+        # save feedback from the robot to file
+        with open("feedback.txt", "a") as f:
+            f.write(f"{msg.linear.x},{msg.linear.y},{msg.angular.z}\n")
 
     def publish_points(self):
         path = Path()
@@ -64,26 +74,9 @@ class GoalPublisher(Node):
 
             nav_start = self.navigator.get_clock().now()
 
-            i = 0
             while not self.navigator.isTaskComplete():
                 self.publish_points()
-
-                i = i + 1
-                feedback = self.navigator.getFeedback()
                 now = self.navigator.get_clock().now()
-
-                # if feedback and i % 15 == 0:
-                #     self.get_logger().debug(
-                #         "Estimated time of arrival: "
-                #         + "{0:.0f}".format(
-                #             Duration.from_msg(
-                #                 feedback.estimated_time_remaining
-                #             ).nanoseconds
-                #             / 1e9
-                #         )
-                #         + " seconds."
-                #     )
-
                 if now - nav_start > Duration(seconds=150.0):
                     self.navigator.cancelTask()
                     self.get_logger().info("Canceling task")
