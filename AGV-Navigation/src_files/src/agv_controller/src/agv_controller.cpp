@@ -504,8 +504,15 @@ namespace agv_controller
             }
         }
         else {
-        std::array<double, 2> u = VFO_Traj_follow(carrot_pose.pose.position.x, carrot_pose.pose.position.y, tf2::getYaw(carrot_pose.pose.orientation));
-        // std::array<double, 2> u = VFO_Point_follow(carrot_pose.pose.position.x, carrot_pose.pose.position.y, tf2::getYaw(carrot_pose.pose.orientation));
+            std::array<double, 2> u;
+            if (carrot_pose == transformed_plan.poses.back())
+            {
+                 u = VFO_Point_follow(carrot_pose.pose.position.x, carrot_pose.pose.position.y, tf2::getYaw(carrot_pose.pose.orientation));
+            }
+            else {
+                 u = VFO_Traj_follow(carrot_pose.pose.position.x, carrot_pose.pose.position.y, tf2::getYaw(carrot_pose.pose.orientation));
+            }
+
         linear_vel = BSP20(u[1]);
         angular_vel = BSP20(u[0]);
         RCLCPP_DEBUG(logger_, " Position: (%.3f,%.3f:%.3f) | Carrot: (%.3f,%.3f:%.3f) | Velocity: (%.3f,%.3f) | u: (%.3f,%.3f)", pose.pose.position.x, pose.pose.position.y,  tf2::getYaw(pose.pose.orientation), carrot_pose.pose.position.x, carrot_pose.pose.position.y, tf2::getYaw(carrot_pose.pose.orientation), linear_vel, angular_vel, u[0], u[1]);

@@ -1,13 +1,13 @@
-from datetime import datetime
-import os
-from geometry_msgs.msg import PoseStamped
-from nav2_simple_commander.robot_navigator import BasicNavigator, TaskResult
+from __future__ import annotations
+
 import rclpy
+from geometry_msgs.msg import PoseStamped
+from geometry_msgs.msg import Twist
+from nav2_simple_commander.robot_navigator import BasicNavigator
+from nav2_simple_commander.robot_navigator import TaskResult
+from nav_msgs.msg import Path
 from rclpy.duration import Duration
 from rclpy.node import Node
-from geometry_msgs.msg import PoseStamped
-from nav_msgs.msg import Path
-from geometry_msgs.msg import Twist
 
 WAYPOINTS = [
     [0.8, -18.5, 0, 0, 0, 0.02, 1.0],
@@ -15,23 +15,25 @@ WAYPOINTS = [
     [4.7, -22.8, 0, 0, 0, 1.0, 0.4],
     [-14.5, -18.8, 0, 0, 0, 0.7, 0.7],
     [-3.13, -3.40, 0, 0, 0, 0.015, 1.0],
-    [-11.0, -17.5, 0, 0, 0, -0.7, 0.7],
+    # [-11.0, -17.5, 0, 0, 0, -0.7, 0.7],
 ]
 
 
 class GoalPublisher(Node):
     def __init__(self):
-        super().__init__("GoalPublisher")
-        self.declare_parameter("test_name", "Params not set")
-        self.test_name = self.get_parameter("test_name").value
+        super().__init__('GoalPublisher')
+        self.declare_parameter('test_name', 'Params not set')
+        self.test_name = self.get_parameter('test_name').value
         self.next_target_publisher = self.create_publisher(
-            PoseStamped, "/next_target", 10
+            PoseStamped, '/next_target', 10,
         )
         # Publish list of all targets to /all_targets
-        self.all_targets_publisher = self.create_publisher(Path, "/all_targets", 10)
+        self.all_targets_publisher = self.create_publisher(
+            Path, '/all_targets', 10,
+        )
 
         self.cmd_vel_subscriber = self.create_subscription(
-            Twist, "/cmd_vel", self.cmd_vel_callback, 10
+            Twist, '/cmd_vel', self.cmd_vel_callback, 10,
         )
         self.navigator = BasicNavigator()
         self.navigator.waitUntilNav2Active()
@@ -42,12 +44,12 @@ class GoalPublisher(Node):
 
     def cmd_vel_callback(self, msg):
         # save feedback from the robot to file
-        with open("feedback.txt", "a") as f:
-            f.write(f"{msg.linear.x},{msg.linear.y},{msg.angular.z}\n")
+        with open('feedback.txt', 'a') as f:
+            f.write(f'{msg.linear.x},{msg.linear.y},{msg.angular.z}\n')
 
     def publish_points(self):
         path = Path()
-        path.header.frame_id = "map"
+        path.header.frame_id = 'map'
         path.header.stamp = self.get_clock().now().to_msg()
         path.poses = self.goal_poses
         self.all_targets_publisher.publish(path)
@@ -59,7 +61,7 @@ class GoalPublisher(Node):
 
         # Main loop for navigation
         for goal_pose in self.goal_poses:
-            self.get_logger().info(f"Sending goal: {goal_pose}")
+            self.get_logger().info(f'Sending goal: {goal_pose}')
             self.navigator.goToPose(goal_pose)
             self.send_pose(
                 goal_pose.pose.position.x,
@@ -77,50 +79,51 @@ class GoalPublisher(Node):
             while not self.navigator.isTaskComplete():
                 self.publish_points()
                 now = self.navigator.get_clock().now()
-                if now - nav_start > Duration(seconds=120.0):
+                if now - nav_start > Duration(seconds=600.0):
                     self.navigator.cancelTask()
-                    self.get_logger().info("Canceling task")
+                    self.get_logger().info('Canceling task')
+                    self.end()
                     break
             result = self.navigator.getResult()
 
             if result is not None:
                 if result == TaskResult.SUCCEEDED:
                     time_array.append(now - nav_start)
-                    self.get_logger().info(f"Goal succeeded! {result}")
+                    self.get_logger().info(f'Goal succeeded! {result}')
                 elif result == TaskResult.CANCELED:
-                    self.get_logger().error("Goal was canceled!")
+                    self.get_logger().error('Goal was canceled!')
                     self.end()
                 elif result == TaskResult.FAILED:
-                    self.get_logger().error("Goal failed!")
+                    self.get_logger().error('Goal failed!')
                     self.end()
 
                 else:
                     failed += 1
-                    self.get_logger().error("Goal has an invalid return status!")
+                    self.get_logger().error('Goal has an invalid return status!')
 
         # Save results to file
-        line = f"{self.test_name},"
+        line = f'{self.test_name},'
         for t in time_array:
-            line += f"{t.nanoseconds},"
+            line += f'{t.nanoseconds},'
             total += t.nanoseconds
-        line += f"{total}"
-        self.get_logger().info(f"Test results: {line} Test results:")
+        line += f'{total}'
+        self.get_logger().info(f'Test results: {line} Test results:')
 
         self.navigator.lifecycleShutdown()
         self.navigator.destroy_node()
-        exit(f"Test results: {line} Test results:")
+        exit(f'Test results: {line} Test results:')
 
     def end(self):
-        self.get_logger().info(f"Test results: FAILED Test results:")
+        self.get_logger().info('Test results: FAILED Test results:')
 
         self.navigator.lifecycleShutdown()
         self.navigator.destroy_node()
-        exit(f"Test results: FAILED Test results:")
+        exit('Test results: FAILED Test results:')
 
     def load_points(self):
         for point in WAYPOINTS:
             goal_pose = PoseStamped()
-            goal_pose.header.frame_id = "map"
+            goal_pose.header.frame_id = 'map'
             goal_pose.header.stamp = self.get_clock().now().to_msg()
             goal_pose.pose.position.x = float(point[0])
             goal_pose.pose.position.y = float(point[1])
@@ -133,7 +136,7 @@ class GoalPublisher(Node):
 
     def send_pose(self, x, y, z, ox, oy, oz, ow):
         self.goal = PoseStamped()
-        self.goal.header.frame_id = "map"
+        self.goal.header.frame_id = 'map'
         self.goal.header.stamp = self.get_clock().now().to_msg()
         self.goal.pose.position.x = x
         self.goal.pose.position.y = y
@@ -143,7 +146,7 @@ class GoalPublisher(Node):
         self.goal.pose.orientation.z = oz
         self.goal.pose.orientation.w = ow
         self.next_target_publisher.publish(self.goal)
-        self.get_logger().info(f"Publishing: X: {x}, Y: {y}, R: {ow}")
+        self.get_logger().info(f'Publishing: X: {x}, Y: {y}, R: {ow}')
 
 
 def main(args=None):
@@ -154,5 +157,5 @@ def main(args=None):
     rclpy.shutdown()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

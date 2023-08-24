@@ -1,3 +1,2 @@
 #!/bin/bash
-docker build -t ghcr.io/jakubczech/agv-sender:main .
-
+docker build  --no-cache -t ghcr.io/jakubczech/agv-sender:main .

@@ -15,10 +15,11 @@ RUN apt-get update && apt-get upgrade -y && apt-get autoremove -y
 RUN apt-get update && apt-get install -y apt-utils \
     ros-$ROS_DISTRO-rmw-cyclonedds-cpp \
     ros-$ROS_DISTRO-navigation2 \
-    ros-$ROS_DISTRO-nav2-bringup \ 
+    ros-$ROS_DISTRO-nav2-bringup \
     ros-$ROS_DISTRO-nav2-util \
-    ros-$ROS_DISTRO-slam-toolbox \ 
-    ros-$ROS_DISTRO-tf2-eigen
+    ros-$ROS_DISTRO-slam-toolbox \
+    ros-$ROS_DISTRO-tf2-eigen \
+    ros-$ROS_DISTRO-nav2-smac-planner
 
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
