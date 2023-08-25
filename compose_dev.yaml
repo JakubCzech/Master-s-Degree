@@ -41,7 +41,7 @@ services:
       - ./AGV-Navigation/src_files/src/agv_navigation/params/nav2_params_controller.yaml:/root/workspace/src/agv_navigation/params/nav2_params_controller.yaml:rw
       # - ./AGV-Navigation/src_files/src/agv_navigation:/root/workspace/src/agv_navigation:rw
       # - ./AGV-Navigation/src_files/src/agv_planner:/root/workspace/src/agv_planner:rw
-      # - ./AGV-Navigation/src_files/src/agv_controller:/root/workspace/src/agv_controller:rw
+      - ./AGV-Navigation/src_files/src/agv_controller:/root/workspace/src/agv_controller:rw
       # - ./AGV-Navigation/src_files/src/agv_waypoint_sender:/root/workspace/src/agv_waypoint_sender:rw
       # - ./AGV-Navigation/scripts/entrypoint.sh:/root/workspace/entrypoint.sh:rw
     tty: true
@@ -57,7 +57,7 @@ services:
     container_name: servo
     image: ghcr.io/jakubczech/ros2_kinco_servo:main
     volumes:
-      - /dev:/dev:ro
+      - /dev:/dev:rw
       # - ./ROS2_Kinco_Servo/src_files/src/kinco_driver:/root/workspace/src/kinco_driver:rw
       # - ./ROS2_Kinco_Servo/scripts/entrypoint.sh:/root/workspace/entrypoint.sh:rw
     tty: true
