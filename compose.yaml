@@ -58,3 +58,14 @@ services:
     hostname: agv
     env_file:
       - ./docker_env.env
+      
+  tester:
+    container_name: tester
+    image: ghcr.io/jakubczech/agv-waypoint-tester:main:main
+    tty: true
+    stdin_open: true
+    privileged: true
+    network_mode: host
+    hostname: agv
+    env_file:
+      - ./docker_env.env

@@ -50,7 +50,7 @@ def get_params_DWB(planner_server):
     return params
 
 
-def get_params_NEO(planner_server, Lookahead=0.5, Rotate_to_heading=None):
+def get_params_NEO(planner_server,Kp=None, Lookahead=0.5, Rotate_to_heading=None):
     params = _get_constant_params(planner_server)
     neo = NEO.format(Lookahead=float(Lookahead))
     params += CONTROLLER.format(FollowPath=neo)
@@ -64,7 +64,7 @@ def get_params_MPPI(planner_server):
     return params
 
 
-def get_params_RPP(planner_server, Lookahead=0.6, Rotate_to_heading=0.785):
+def get_params_RPP(planner_server,Kp=None, Lookahead=0.6, Rotate_to_heading=0.785):
     params = _get_constant_params(planner_server)
     rpp = RPP.format(
         Lookahead=float(Lookahead),

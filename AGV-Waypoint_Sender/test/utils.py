@@ -39,8 +39,10 @@ def test(planner: str, controller: str, test_info: str, result_file_path: str, K
     logging.info(test_info)
 
     with open(PARAM_FILE_PATH, 'w') as f:
-        f.write(PARAMS[controller](planner, Kp, Lookahead, Rotate_to_heading))
-
+        if Kp:
+            f.write(PARAMS[controller](planner, Kp, Lookahead, Rotate_to_heading))
+        else:
+            f.write(PARAMS[controller](planner))
     test_instance = Test(name)
     #  wait for navigation  or nav2 error
     while not test_instance.navigation_ready.is_set() and not test_instance.nav2_error.is_set():

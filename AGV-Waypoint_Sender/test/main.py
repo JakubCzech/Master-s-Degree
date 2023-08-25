@@ -19,9 +19,9 @@ CONFIG_PATH = 'config/path_here.yaml'
 # This can also be a dict if you use a JSON or a YAML configuration file.
 CONFIG = {
     'planners': ['GridBased', 'SmacPlanner', 'ThetaStarPlanner'],
-    'controllers': ['VFO', 'NEO', 'RPP'],
+    'controllers': ['NEO', 'RPP'],
     'Kp': list(range(1, 6)),
-    'Lookahead': [0.75],
+    'Lookahead': [0.5, 1.0, 1.25],
     'Rotate_to_heading': [0.5, 1.0, 1.5],
     'num_of_repeat': 2,
 }
@@ -34,8 +34,8 @@ def tuning_VFO():
     test_number = len(CONFIG['planners']) * CONFIG['num_of_repeat'] * len(
         CONFIG['Kp'],
     ) * len(CONFIG['Lookahead']) * len(CONFIG['Rotate_to_heading'])
-    info = ''
-
+    info = []
+    CONFIG['Kp'] = list(range(2, 6))
     for planner in CONFIG['planners']:
         for Ka_ in CONFIG['Kp']:
             for Lookahead_ in CONFIG['Lookahead']:
@@ -43,28 +43,63 @@ def tuning_VFO():
                     for _ in range(CONFIG['num_of_repeat']):
                         test_counter += 1
                         test_info = f'Test {test_counter}/{test_number}'
-                        info += test(
+                        result= test(
                             planner, 'VFO', test_info, TUNING_VFO_FILEPATH,
                             Ka_, Lookahead_, Rotate_to_heading_,
                         )
-                        info += '\n'
+                        info.append(result)
                         clear_screen()
+    return info
+
+def tuning_final():
+    test_counter = 0
+    test_number = len(CONFIG['planners'])  * len(CONFIG['Kp'])  * len(CONFIG['Lookahead']) * len(CONFIG['Rotate_to_heading'])
+    info = []
+
+    for planner in CONFIG['planners']:
+        for Ka_ in CONFIG['Kp']:
+            for Lookahead_ in len(CONFIG['Lookahead']):
+                for Rotate_to_heading_ in CONFIG['Rotate_to_heading']:
+                    if planner == 'GridBased' and Ka_ == 1 and Lookahead_ <= 1.25:
+                        continue
+                    test_counter += 1
+                    test_info = f'Test {test_counter}/{test_number}'
+                    result= test(
+                        planner, 'VFO', test_info, TUNING_VFO_FILEPATH,
+                        Ka_, Lookahead_, Rotate_to_heading_,
+                    )
+                    info.append(result)
+                    clear_screen()
     return info
 
 
 def compare_conf():
     test_counter = 0
     test_number = len(CONFIG['planners']) * \
-        len(CONFIG['controllers']) * CONFIG['num_of_repeat']
-    info = ''
-
+        len(CONFIG['controllers']) 
+    info = []
     for planner in CONFIG['planners']:
         for controller in CONFIG['controllers']:
-            for _ in range(CONFIG['num_of_repeat']):
+            test_counter += 1
+            test_info = f'Test {test_counter}/{test_number}'
+            result = test(planner, controller, test_info, "vfo_2.text")
+            info.append(result)
+            clear_screen()
+    return info
+
+
+def test_final():
+    test_counter = 0
+    test_number = len(CONFIG['planners']) * \
+        len(CONFIG['controllers']) * 10 
+    info = []
+    for planner in CONFIG['planners']:
+        for controller in CONFIG['controllers']:
+            for _ in range(10):
                 test_counter += 1
                 test_info = f'Test {test_counter}/{test_number}'
-                info += test(planner, controller, test_info, COMPARE_FILEPATH)
-                info += '\n'
+                result = test(planner, controller, test_info, "vfo_2.text")
+                info.append(result)
                 clear_screen()
     return info
 
@@ -72,11 +107,24 @@ def compare_conf():
 if __name__ == '__main__':
     try:
         clear_screen()
-        final_info = tuning_VFO()
-        # final_info = compare_conf()
+        # try:
+        #     final_info2 = compare_conf()
+        # except:
+        #     pass
+        # try:
+        #     final_info = tuning_VFO()
+        # except:
+        #     pass
+        # try:
+        #     final_info3 = tuning_VFO2()
+        # except:
+        #     pass
+        final_info2 = tuning_final()
+
+
         clear_screen()
         logging.info('Done')
-        print(final_info)
+        print(final_info2)
     except KeyboardInterrupt:
         logging.warning('KeyboardInterrupt')
     finally:
